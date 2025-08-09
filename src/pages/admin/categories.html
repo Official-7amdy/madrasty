@@ -1,0 +1,78 @@
+{{!< admin}}
+
+<div class="admin-card">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>إدارة تصنيفات الكورسات</h1>
+    </div>
+
+    <div class="category-grid">
+        <!-- Add Category Form -->
+        <div class="admin-card">
+            <h3>إضافة تصنيف جديد</h3>
+            <form action="/admin/categories/add" method="POST" class="styled-form">
+                <div class="form-group">
+                    <label for="name">اسم التصنيف</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="slug">الاسم اللطيف (Slug)</label>
+                    <input type="text" id="slug" name="slug" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">إضافة</button>
+            </form>
+        </div>
+
+        <!-- Category List -->
+        <div class="admin-card">
+            <h3>قائمة التصنيفات الحالية</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>الاسم اللطيف</th>
+                        <th>إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each categories}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.slug}}</td>
+                        <td>
+                            <a href="/admin/categories/delete/{{this.slug}}" class="btn btn-danger btn-sm" onclick="return confirm('هل أنت متأكد؟')">حذف</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{{#section 'styles'}}
+<style>
+    .category-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1.5rem;
+    }
+    .btn-danger {
+        background-color: #ef4444;
+        color: white;
+    }
+    .btn-danger:hover {
+        background-color: #dc2626;
+    }
+    .input-group {
+        display: flex;
+    }
+    .input-group .form-control {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .input-group .btn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+</style>
+{{/section}}

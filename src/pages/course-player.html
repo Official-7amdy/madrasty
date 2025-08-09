@@ -1,0 +1,51 @@
+{{!< base}}
+
+{{#section 'page_title'}}{{course.title}} - مشغل الكورس{{/section}}
+
+{{#section 'content'}}
+<div class="course-player-layout">
+    <!-- Main Content: Video Player -->
+    <main class="course-player-main">
+        <div class="video-container">
+            <iframe id="lesson-video-player" src="{{currentLesson.videoUrl}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="lesson-header">
+            <h1 id="lesson-title">{{currentLesson.title}}</h1>
+            <p id="lesson-duration">مدة الدرس: {{currentLesson.duration}}</p>
+        </div>
+        <div class="lesson-actions">
+            <button class="btn btn-secondary">الدرس السابق</button>
+            <button class="btn btn-primary">إكمال والمتابعة</button>
+        </div>
+    </main>
+
+    <!-- Sidebar: Curriculum -->
+    <aside class="course-player-sidebar">
+        <div class="sidebar-header">
+            <h3>محتويات الكورس</h3>
+            <a href="/courses/{{course.slug}}">العودة لصفحة الكورس</a>
+        </div>
+        <div class="curriculum-list">
+            {{#each course.modules}}
+            <div class="module">
+                <div class="module-header">
+                    <h4>{{this.title}}</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="lesson-list">
+                    {{#each this.lessons}}
+                    <li>
+                        <a href="/learn/{{../course.slug}}/{{this.id}}" class="lesson-link {{#if (eq this.id ../currentLesson.id)}}active{{/if}}">
+                            <i class="far fa-play-circle"></i>
+                            <span>{{this.title}}</span>
+                            <span class="lesson-duration-badge">{{this.duration}}</span>
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/each}}
+        </div>
+    </aside>
+</div>
+{{/section}}

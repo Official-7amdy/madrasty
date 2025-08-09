@@ -1,0 +1,96 @@
+{{!< base}}
+
+{{#section 'page_title'}}الملف الشخصي{{/section}}
+
+{{#section 'content'}}
+<main class="profile-page-v2">
+    <!-- Profile Header -->
+    <header class="profile-header">
+        <div class="container">
+            <div class="profile-header-content">
+                <div class="profile-avatar-wrapper">
+                    <img src="{{user.profilePicture}}" alt="الصورة الشخصية" class="profile-avatar">
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">{{user.name}}</h1>
+                    <p class="profile-email">{{user.email}}</p>
+                </div>
+            </div>
+            <!-- Tabs Navigation -->
+            <nav class="profile-tabs-nav">
+                <a href="#" class="tab-link active" data-tab="overview"><i class="fas fa-user"></i> نظرة عامة</a>
+                <a href="#" class="tab-link" data-tab="courses"><i class="fas fa-graduation-cap"></i> كورساتي</a>
+                <a href="#" class="tab-link" data-tab="settings"><i class="fas fa-cog"></i> الإعدادات</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Tabs Content -->
+    <div class="profile-content container">
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="profile-card">
+                <h3>تفاصيل الاشتراك</h3>
+                <p><strong>الخطة الحالية:</strong> {{subscription.name}}</p>
+                <p><strong>تاريخ الانضمام:</strong> {{user.joined}}</p>
+                <a href="/subscription" class="btn btn-secondary btn-sm">تغيير الخطة</a>
+            </div>
+        </div>
+
+        <!-- My Courses Tab -->
+        <div id="courses" class="tab-content">
+            <div class="courses-grid">
+                 {{#if enrolled}}
+                    {{#each enrolled}}
+                        {{> course-card}}
+                    {{/each}}
+                {{else}}
+                    <div class="profile-card">
+                        <p>لم تقم بالتسجيل في أي كورس بعد. <a href="/courses">تصفح الكورسات</a></p>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings" class="tab-content">
+            <div class="profile-card">
+                <h4>تحديث معلومات الحساب</h4>
+                <form action="/profile/update" method="POST" enctype="multipart/form-data" class="styled-form mb-4">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" value="{{user.name}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" value="{{user.email}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="profilePicture">الصورة الشخصية</label>
+                        <input type="file" id="profilePicture" name="profilePicture" class="form-control-file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                </form>
+            </div>
+            <div class="profile-card">
+                <h4>تغيير كلمة المرور</h4>
+                <form action="/profile/change-password" method="POST" class="styled-form">
+                    <div class="form-group">
+                        <label for="currentPassword">كلمة المرور الحالية</label>
+                        <input type="password" id="currentPassword" name="currentPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">كلمة المرور الجديدة</label>
+                        <input type="password" id="newPassword" name="newPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">تغيير كلمة المرور</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{{/section}}
+
+{{#section 'additional_js'}}
+<script type="module" src="/assets/js/pages/profile.js"></script>
+{{/section}}

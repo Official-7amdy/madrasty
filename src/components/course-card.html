@@ -1,0 +1,32 @@
+<div class="course-card-v2">
+    <a href="/courses/{{slug}}" class="card-image-link">
+        <img src="{{image}}" alt="صورة كورس {{title}}" class="card-image">
+        <div class="image-overlay">
+            <span class="category-badge">{{category}}</span>
+        </div>
+    </a>
+    <div class="card-content">
+        <h3 class="card-title">
+            <a href="/courses/{{slug}}">{{title}}</a>
+        </h3>
+        <div class="card-instructor">
+            <img src="{{instructorAvatar}}" alt="صورة المدرب {{instructor}}" class="instructor-avatar">
+            <span>{{instructor}}</span>
+        </div>
+        <div class="card-meta">
+            <div class="meta-item">
+                <i class="fas fa-play-circle"></i> {{lessons}} درس
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-clock"></i> {{duration}}
+            </div>
+            <div class="meta-item rating">
+                <i class="fas fa-star"></i> {{rating}}
+            </div>
+        </div>
+        <div class="card-footer">
+            <span class="card-price">{{price}}</span>
+            <a href="/courses/{{slug}}" class="btn btn-secondary btn-sm">التفاصيل</a>
+        </div>
+    </div>
+</div>

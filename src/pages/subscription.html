@@ -1,0 +1,43 @@
+{{!< base}}
+
+{{#section 'page_title'}}خطط الاشتراك{{/section}}
+{{#section 'page_description'}}اختر الخطة التي تناسب احتياجاتك وابدأ رحلتك التعليمية مع مدرستي.{{/section}}
+
+{{#section 'content'}}
+<main class="subscription-page">
+    <!-- Subscription Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">خطط اشتراك مرنة للجميع</h1>
+            <p class="page-subtitle">سواء كنت طالبًا، محترفًا، أو فريق عمل، لدينا الخطة المثالية لك.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Table Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-grid">
+                {{#each plans}}
+                <div class="pricing-card {{#if this.recommended}}recommended{{/if}}">
+                    {{#if this.recommended}}
+                    <div class="recommended-badge">الأكثر شيوعًا</div>
+                    {{/if}}
+                    <div class="pricing-header">
+                        <h2 class="plan-name">{{this.name}}</h2>
+                        <p class="plan-price">{{this.price}}</p>
+                    </div>
+                    <ul class="features-list">
+                        {{#each this.features}}
+                        <li><i class="fas fa-check-circle"></i> {{this}}</li>
+                        {{/each}}
+                    </ul>
+                    <a href="/checkout/{{@key}}" class="btn {{#if this.recommended}}btn-primary{{else}}btn-secondary{{/if}} btn-block">
+                        {{#if this.contact}}تواصل معنا{{else}}اختر الخطة{{/if}}
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</main>
+{{/section}}

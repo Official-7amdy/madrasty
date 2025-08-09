@@ -1,0 +1,56 @@
+{{!< base}}
+
+{{#section 'page_title'}}إتمام الاشتراك{{/section}}
+{{#section 'page_description'}}أكمل اشتراكك في مدرستي بخطوات بسيطة وآمنة.{{/section}}
+
+{{#section 'content'}}
+<main class="checkout-page">
+    <div class="container">
+        <div class="checkout-layout">
+            <!-- Order Summary -->
+            <aside class="order-summary">
+                <h2 class="summary-title">ملخص الطلب</h2>
+                <div class="summary-card">
+                    <div class="plan-details">
+                        <h3 class="plan-name">{{plan.name}}</h3>
+                        <p class="plan-price">{{plan.price}}<span class="price-period">/شهريًا</span></p>
+                    </div>
+                    <ul class="features-list">
+                        {{#each plan.features}}
+                        <li><i class="fas fa-check-circle"></i> {{this}}</li>
+                        {{/each}}
+                    </ul>
+                    <div class="total-amount">
+                        <span>الإجمالي</span>
+                        <span>{{plan.price}}</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Payment Form -->
+            <section class="payment-form-section">
+                <h2 class="payment-title">معلومات الدفع</h2>
+                <form id="payment-form" class="payment-form">
+                    <div class="form-group">
+                        <label for="card-holder-name" class="form-label">الاسم على البطاقة</label>
+                        <input type="text" id="card-holder-name" class="form-control" placeholder="اكتب اسمك كما يظهر على البطاقة" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number" class="form-label">رقم البطاقة</label>
+                        <div id="card-element" class="form-control">
+                            <!-- A Stripe Element will be inserted here. -->
+                        </div>
+                        <div id="card-errors" role="alert" class="form-error"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">ادفع الآن وتصفح الكورسات</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</main>
+{{/section}}
+
+{{#section 'additional_js'}}
+<script src="https://js.stripe.com/v3/"></script>
+<script type="module" src="/assets/js/pages/checkout.js"></script>
+{{/section}}

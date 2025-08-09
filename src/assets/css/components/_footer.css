@@ -1,0 +1,64 @@
+/* src/assets/css/components/_footer.css */
+.footer {
+    background-color: var(--gray-800);
+    color: white;
+    padding: 3rem 0;
+}
+.footer__content {
+    display: grid;
+    gap: 2rem;
+}
+.footer__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.footer__description {
+    color: var(--gray-400);
+    margin-top: 1rem;
+}
+.footer__subtitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+.footer__links {
+    list-style: none;
+    margin-top: 1rem;
+    /* The space-y utility is not standard CSS. Replaced with margin. */
+}
+.footer__links li {
+    margin-bottom: 0.5rem;
+}
+.footer__links a {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer__links a:hover {
+    color: white;
+}
+.footer__social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.footer__social a {
+    color: var(--gray-400);
+    transition: all 0.3s;
+}
+.footer__social a:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+.footer__bottom {
+    border-top: 1px solid var(--gray-700);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: var(--gray-500);
+}
+
+@media (min-width: 768px) {
+    .footer__content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

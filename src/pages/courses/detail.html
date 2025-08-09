@@ -1,0 +1,101 @@
+{{!< base}}
+
+{{#section 'page_title'}}{{course.title}}{{/section}}
+{{#section 'page_description'}}{{course.description}}{{/section}}
+
+{{#section 'content'}}
+<main class="course-detail-page">
+    <!-- Course Hero Section -->
+    <header class="course-hero">
+        <div class="container">
+            <div class="course-hero-content">
+                <div class="course-hero-text">
+                    <p class="course-category">{{course.category}}</p>
+                    <h1 class="course-title">{{course.title}}</h1>
+                    <p class="course-subtitle">{{course.description}}</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-user-tie"></i> المدرب: {{course.instructor}}</span>
+                        <span><i class="fas fa-star"></i> التقييم: {{course.rating}}</span>
+                        <span><i class="fas fa-users"></i> 1,234 طالب مسجل</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container page-section">
+        <div class="course-layout">
+            <!-- Main Course Content -->
+            <div class="course-content">
+                <div class="course-video-preview">
+                    <img src="{{course.image}}" alt="مقدمة الكورس" />
+                    <button class="play-button"><i class="fas fa-play"></i></button>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="tabs-container">
+                    <ul class="tabs-nav">
+                        <li class="tab-link active" data-tab="description">عن الكورس</li>
+                        <li class="tab-link" data-tab="curriculum">منهج الكورس</li>
+                        <li class="tab-link" data-tab="reviews">التقييمات</li>
+                    </ul>
+
+                    <!-- Tabs Content -->
+                    <div id="description" class="tab-content active">
+                        <h2>ماذا ستتعلم في هذا الكورس؟</h2>
+                        <p>هنا وصف مفصل للمهارات والمعارف التي سيكتسبها الطالب بعد إتمام الكورس. سنغطي كل شيء من الأساسيات وحتى المواضيع المتقدمة.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> بناء واجهات ويب حديثة وتفاعلية.</li>
+                            <li><i class="fas fa-check-circle"></i> فهم عميق لأساسيات HTML, CSS, و JavaScript.</li>
+                            <li><i class="fas fa-check-circle"></i> تطبيق أفضل الممارسات في التصميم المتجاوب.</li>
+                        </ul>
+                    </div>
+                    <div id="curriculum" class="tab-content">
+                        <h2>منهج الكورس</h2>
+                        <ul class="curriculum-list">
+                            {{#each course.modules}}
+                            <li><strong>{{this.title}}:</strong> {{this.lessons.length}} دروس</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div id="reviews" class="tab-content">
+                        <h2>تقييمات الطلاب</h2>
+                        <div class="review">
+                            <p>"كورس رائع ومفيد جدًا!" - <strong>أحمد</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Sidebar -->
+            <aside class="course-sidebar" id="course-sidebar">
+                <div class="sidebar-inner">
+                    <div class="price-box">
+                        <span class="price">{{course.price}}</span>
+                    </div>
+                    {{#if isEnrolled}}
+                        <a href="/learn/{{course.slug}}/{{firstLessonId}}" class="btn btn-primary btn-block">ابدأ التعلم الآن</a>
+                    {{else}}
+                        <a href="/subscription" class="btn btn-primary btn-block">اشترك الآن للبدء</a>
+                    {{/if}}
+                    <div class="course-info">
+                        <h3>يتضمن هذا الكورس:</h3>
+                        <ul>
+                            <li><i class="fas fa-video"></i> {{course.duration}} من الفيديوهات</li>
+                            <li><i class="fas fa-file-alt"></i> {{course.lessons}} درس وواجب</li>
+                            <li><i class="fas fa-infinity"></i> وصول مدى الحياة</li>
+                            <li><i class="fas fa-mobile-alt"></i> مشاهدة على الموبايل والتلفاز</li>
+                            <li><i class="fas fa-trophy"></i> شهادة إتمام</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+{{/section}}
+
+{{#section 'additional_js'}}
+<script type="module" src="/assets/js/pages/courseDetail.js"></script>
+{{/section}}

@@ -1,0 +1,15 @@
+{{!< admin}}
+
+<div class="admin-card">
+    <h1>إدارة محتوى الموقع</h1>
+    <p>اختر الصفحة التي ترغب في تعديل محتواها.</p>
+    
+    <div class="content-page-list">
+        {{#each pages}}
+        <div class="content-page-item">
+            <span class="page-name">{{this}}</span>
+            <a href="/admin/content/edit/{{this}}" class="btn btn-secondary btn-sm">تعديل</a>
+        </div>
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,85 @@
+{{!< admin}}
+
+<div class="admin-card">
+    <h1>تحليلات المنصة</h1>
+    <p>نظرة مرئية على بيانات المنصة الرئيسية.</p>
+
+    <div class="charts-grid">
+        <div class="chart-container">
+            <h3>توزيع المستخدمين (طلاب/مدربون)</h3>
+            <canvas id="userRolesChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>الكورسات حسب الفئة</h3>
+            <canvas id="coursesByCategoryChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch analytics data from the server
+        fetch('/admin/analytics/data')
+            .then(response => response.json())
+            .then(data => {
+                // User Roles Chart
+                const userRolesCtx = document.getElementById('userRolesChart').getContext('2d');
+                new Chart(userRolesCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: data.userRoles.labels,
+                        datasets: [{
+                            label: 'User Roles',
+                            data: data.userRoles.data,
+                            backgroundColor: ['#3b82f6', '#10b981'],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                    }
+                });
+
+                // Courses by Category Chart
+                const coursesByCategoryCtx = document.getElementById('coursesByCategoryChart').getContext('2d');
+                new Chart(coursesByCategoryCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.coursesByCategory.labels,
+                        datasets: [{
+                            label: 'Number of Courses',
+                            data: data.coursesByCategory.data,
+                            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    });
+</script>
+
+{{#section 'styles'}}
+<style>
+    .charts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .chart-container {
+        background-color: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+</style>
+{{/section}}

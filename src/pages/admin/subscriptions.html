@@ -1,0 +1,41 @@
+{{!< admin}}
+
+<div class="admin-card">
+    <h1>إدارة خطط الاشتراك</h1>
+    <p>إدارة مستويات الاشتراك والأسعار والميزات.</p>
+
+    <div class="subscription-plans-grid">
+        {{#each plans}}
+        <div class="admin-card">
+            <h3>{{this.name}}</h3>
+            <form action="/admin/subscriptions/save" method="POST" class="styled-form">
+                <input type="hidden" name="id" value="{{@key}}">
+                <div class="form-group">
+                    <label>اسم الخطة</label>
+                    <input type="text" name="name" value="{{this.name}}" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>السعر</label>
+                    <input type="text" name="price" value="{{this.price}}" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>الميزات (مفصولة بفاصلة)</label>
+                    <textarea name="features" rows="4" class="form-control" required>{{#each this.features}}{{#unless @first}}, {{/unless}}{{this}}{{/each}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ</button>
+            </form>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+{{#section 'styles'}}
+<style>
+    .subscription-plans-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+</style>
+{{/section}}

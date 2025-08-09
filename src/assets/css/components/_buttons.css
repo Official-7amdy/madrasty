@@ -1,0 +1,58 @@
+/* src/assets/css/components/_buttons.css */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px; /* Updated border-radius */
+    border: 1px solid transparent;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Primary Button (Sign Up) */
+.btn-primary {
+    background: var(--auth-accent-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: var(--auth-accent-color-dark);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.15);
+}
+
+/* Secondary Button (Sign In) */
+.btn-secondary {
+    background-color: #F3F4F6;
+    color: var(--auth-text-color);
+}
+.btn-secondary:hover{
+    background-color: #E5E7EB;
+}
+
+/* Text Button */
+.btn-text {
+    background: transparent;
+    color: var(--primary-blue);
+    padding: 0;
+}
+.btn-text:hover {
+    color: var(--primary-blue-hover);
+    text-decoration: underline;
+}
+
+
+.btn-block {
+    width: 100%;
+}

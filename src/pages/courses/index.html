@@ -1,0 +1,104 @@
+{{!< base}}
+
+{{#section 'page_title'}}الكورسات{{/section}}
+{{#section 'page_description'}}تصفح جميع كورسات مدرستي في البرمجة، التسويق، التصميم وغيرها.{{/section}}
+
+{{#section 'content'}}
+<div class="courses-page">
+    <!-- Hero Section -->
+    <section class="page-hero-v2">
+        <div class="container">
+            <h1 class="page-title-v2">استكشف مكتبة الكورسات</h1>
+            <p class="page-subtitle-v2">ابحث عن شغفك الجديد أو طور مهاراتك الحالية مع مجموعتنا المتنوعة من الكورسات.</p>
+            <div class="search-box">
+                <input type="text" placeholder="ماذا تريد أن تتعلم؟">
+                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Courses Carousel -->
+    <section class="section featured-courses">
+        <div class="container">
+            <h2 class="section-title">كورسات مميزة</h2>
+            <div class="swiper-container featured-swiper">
+                <div class="swiper-wrapper">
+                    {{#each featuredCourses}}
+                    <div class="swiper-slide">
+                        {{> course-card}}
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses by Category -->
+    {{#each categories}}
+    <section class="section category-section">
+        <div class="container">
+            <h2 class="section-title">{{this.name}}</h2>
+            <div class="swiper-container category-swiper">
+                <div class="swiper-wrapper">
+                    {{#each this.courses}}
+                    <div class="swiper-slide">
+                        {{> course-card}}
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    {{/each}}
+</div>
+{{/section}}
+
+{{#section 'additional_js'}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Featured Courses Carousel
+        new Swiper('.featured-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Category Sliders
+        document.querySelectorAll('.category-swiper').forEach(function(swiperElement) {
+            new Swiper(swiperElement, {
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    }
+                }
+            });
+        });
+    });
+</script>
+{{/section}}

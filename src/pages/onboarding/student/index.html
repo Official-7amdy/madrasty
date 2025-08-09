@@ -1,0 +1,67 @@
+{{!< base}}
+
+{{#section 'page_title'}}إكمال التسجيل{{/section}}
+
+{{#section 'content'}}
+<main class="onboarding-container">
+    <div class="onboarding-card">
+        <h1>مرحبًا بك في مدرستي!</h1>
+        <p>نحتاج إلى بعض المعلومات الإضافية لتخصيص تجربتك التعليمية.</p>
+
+        <form action="/onboarding" method="POST" class="onboarding-form">
+            <!-- Step 1: Study Status -->
+            <div class="form-step active" data-step="1">
+                <label class="form-label">ما هو وضعك الدراسي الحالي؟</label>
+                <select name="studyStatus" class="form-control" data-next-step>
+                    <option value="">اختر وضعك الدراسي</option>
+                    <option value="school">طالب في المدرسة</option>
+                    <option value="university">طالب جامعي</option>
+                    <option value="graduate">خريج</option>
+                    <option value="other">غير ذلك</option>
+                </select>
+            </div>
+
+            <!-- Step 2: School Grade -->
+            <div class="form-step" data-step="2" data-condition="studyStatus" data-condition-value="school">
+                <label class="form-label">في أي صف دراسي أنت؟</label>
+                <select name="schoolGrade" class="form-control" data-next-step>
+                    <option value="">اختر صفك الدراسي</option>
+                    <option value="1">الصف الأول الثانوي</option>
+                    <option value="2">الصف الثاني الثانوي</option>
+                    <option value="3">الصف الثالث الثانوي (ثانوية عامة)</option>
+                </select>
+            </div>
+
+            <!-- Step 3: Thanawya Amma Section -->
+            <div class="form-step" data-step="3" data-condition="schoolGrade" data-condition-value="3">
+                <label class="form-label">ما هي شعبتك في الثانوية العامة؟</label>
+                <select name="thanawyaSection" class="form-control" data-next-step>
+                    <option value="">اختر شعبتك</option>
+                    <option value="science">علمي</option>
+                    <option value="literary">أدبي</option>
+                </select>
+            </div>
+            
+            <!-- Step 4: Science Branch -->
+            <div class="form-step" data-step="4" data-condition="thanawyaSection" data-condition-value="science">
+                <label class="form-label">أي فرع في القسم العلمي؟</label>
+                <select name="scienceBranch" class="form-control">
+                    <option value="">اختر فرعك</option>
+                    <option value="math">علمي رياضة</option>
+                    <option value="sciences">علمي علوم</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">حفظ ومتابعة</button>
+        </form>
+    </div>
+</main>
+{{/section}}
+
+{{#section 'additional_css'}}
+<link rel="stylesheet" href="/assets/css/pages/_student-onboarding.css">
+{{/section}}
+
+{{#section 'additional_js'}}
+<script type="module" src="/assets/js/pages/student-onboarding.js"></script>
+{{/section}}

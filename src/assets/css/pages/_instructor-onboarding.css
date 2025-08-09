@@ -1,0 +1,3 @@
+/* src/assets/css/pages/_instructor-onboarding.css */
+/* Using the same styles as student onboarding for consistency */
+@import url("_student-onboarding.css");

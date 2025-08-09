@@ -1,0 +1,79 @@
+{{!< admin}}
+
+<div class="admin-card">
+    <h1>{{#if course}}تعديل الكورس{{else}}إضافة كورس جديد{{/if}}</h1>
+
+    <form method="POST" action="{{#if course}}/admin/courses/edit/{{course.slug}}{{else}}/admin/courses/save{{/if}}">
+        <div class="form-group mb-3">
+            <label for="title" class="form-label">عنوان الكورس</label>
+            <input type="text" id="title" name="title" class="form-control" value="{{course.title}}" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="slug" class="form-label">المعرّف (Slug)</label>
+            <input type="text" id="slug" name="slug" class="form-control" value="{{course.slug}}" placeholder="e.g., web-development-basics" {{#if course}}readonly{{/if}}>
+            {{#if isNew}}<small class="form-text text-muted">اتركه فارغًا ليتم إنشاؤه تلقائيًا.</small>{{/if}}
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for="category" class="form-label">الفئة</label>
+            <select id="category" name="category" class="form-control" required>
+                <option value="">اختر فئة</option>
+                {{#each categories}}
+                <option value="{{this.name}}" {{#if (eq ../course.category this.name)}}selected{{/if}}>{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for="instructor" class="form-label">المدرب</label>
+            <input type="text" id="instructor" name="instructor" class="form-control" value="{{course.instructor}}" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="price" class="form-label">السعر</label>
+            <input type="text" id="price" name="price" class="form-control" value="{{course.price}}" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="description" class="form-label">الوصف</label>
+            <textarea id="description" name="description" class="form-control" rows="4">{{course.description}}</textarea>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="categoryClass" class="form-label">الفئة (CSS Class)</label>
+            <select id="categoryClass" name="categoryClass" class="form-control" required>
+                <option value="">اختر فئة</option>
+                {{#each categories}}
+                <option value="{{this.slug}}" {{#if (eq ../course.categoryClass this.slug)}}selected{{/if}}>{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">حفظ الكورس</button>
+        <a href="/admin/courses" class="btn btn-secondary">إلغاء</a>
+    </form>
+</div>
+
+<style>
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    .form-control {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--admin-border-color);
+        background-color: #f9fafb;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        font-size: 0.9rem;
+    }
+    .mb-3 {
+        margin-bottom: 1rem;
+    }
+</style>

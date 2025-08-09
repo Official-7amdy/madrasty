@@ -1,0 +1,70 @@
+<!-- src/components/header.html -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="brand-logo" aria-label="العودة للرئيسية">
+        <span class="brand-mark">م</span>
+        <span class="brand-name">مدرستي</span>
+      </a>
+
+      <nav class="main-nav" role="navigation" aria-label="روابط رئيسية">
+        <a href="/" class="nav-link {{#if (eq currentPath "/")}}nav-link--active{{/if}}">الرئيسية</a>
+        <a href="/courses" class="nav-link {{#if (startsWith currentPath "/courses")}}nav-link--active{{/if}}">الكورسات</a>
+        <a href="/subscription" class="nav-link {{#if (eq currentPath "/subscription")}}nav-link--active{{/if}}">الاشتراك</a>
+        {{#if (eq user.role 'instructor')}}
+            <a href="/instructor/dashboard" class="nav-link {{#if (startsWith currentPath "/instructor")}}nav-link--active{{/if}}">لوحة تحكم المدرب</a>
+        {{else}}
+            <a href="/instructor/register" class="nav-link {{#if (startsWith currentPath "/instructor")}}nav-link--active{{/if}}">كن مدربًا</a>
+        {{/if}}
+        <a href="/about" class="nav-link {{#if (eq currentPath "/about")}}nav-link--active{{/if}}">عن المنصة</a>
+        <a href="/contact" class="nav-link {{#if (eq currentPath "/contact")}}nav-link--active{{/if}}">تواصل معنا</a>
+      </nav>
+
+      <div class="header-actions">
+          {{#if user}}
+            <div class="user-menu-container">
+              <button class="user-menu-button">
+                <img src="{{user.profilePicture}}" alt="الصورة الشخصية" class="user-avatar">
+                <span>{{user.name}}</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="user-menu">
+                <a href="/profile" class="user-menu-link">الملف الشخصي</a>
+                <a href="/profile#settings" class="user-menu-link">الإعدادات</a>
+                <hr>
+                <a href="/auth/logout" class="user-menu-link">تسجيل الخروج</a>
+              </div>
+            </div>
+          {{else}}
+            <a href="/auth" class="btn btn-secondary">تسجيل الدخول</a>
+            <a href="/auth?mode=register" class="btn btn-primary">إنشاء حساب</a>
+          {{/if}}
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-button" aria-label="فتح القائمة" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav-container" id="mobile-nav">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link {{#if (eq currentPath "/")}}mobile-nav-link--active{{/if}}">الرئيسية</a>
+      <a href="/courses" class="mobile-nav-link {{#if (startsWith currentPath "/courses")}}mobile-nav-link--active{{/if}}">الكورسات</a>
+        <a href="/subscription" class="mobile-nav-link {{#if (eq currentPath "/subscription")}}nav-link--active{{/if}}">الاشتراك</a>
+        <a href="/instructor/register" class="mobile-nav-link {{#if (startsWith currentPath "/instructor")}}nav-link--active{{/if}}">كن مدربًا</a>
+      <a href="/about" class="mobile-nav-link {{#if (eq currentPath "/about")}}mobile-nav-link--active{{/if}}">عن المنصة</a>
+      <a href="/contact" class="mobile-nav-link {{#if (eq currentPath "/contact")}}mobile-nav-link--active{{/if}}">تواصل معنا</a>
+    </nav>
+    <div class="mobile-nav-actions">
+        {{#if user}}
+            <a href="/auth/logout" class="btn btn-secondary btn-block">تسجيل الخروج</a>
+        {{else}}
+            <a href="/auth?mode=register" class="btn btn-primary btn-block">إنشاء حساب</a>
+            <a href="/auth" class="btn btn-secondary btn-block">تسجيل الدخول</a>
+        {{/if}}
+    </div>
+  </div>
+</header>

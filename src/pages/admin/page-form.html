@@ -1,0 +1,42 @@
+{{!< admin}}
+
+<div class="admin-card">
+    <h1>تعديل محتوى صفحة: {{pageName}}</h1>
+    
+    <form action="/admin/content/edit/{{pageName}}" method="POST" enctype="multipart/form-data" class="styled-form">
+        <div class="form-group">
+            <label for="title">العنوان الرئيسي (Title)</label>
+            <input type="text" id="title" name="title" value="{{content.title}}" class="form-control">
+        </div>
+
+        {{#if content.subtitle}}
+        <div class="form-group">
+            <label for="subtitle">العنوان الفرعي (Subtitle)</label>
+            <input type="text" id="subtitle" name="subtitle" value="{{content.subtitle}}" class="form-control">
+        </div>
+        {{/if}}
+
+        {{#if content.content}}
+        <div class="form-group">
+            <label for="content">المحتوى النصي (Content)</label>
+            <textarea id="content" name="content" rows="8" class="form-control">{{content.content}}</textarea>
+        </div>
+        {{/if}}
+        
+        <div class="form-group">
+            <label for="image">صورة الصفحة (Hero/Mission Image)</label>
+            <input type="file" id="image" name="image" class="form-control-file">
+            {{#if content.heroImage}}
+            <small class="form-text text-muted">الصورة الحالية: <a href="{{content.heroImage}}" target="_blank">عرض الصورة</a></small>
+            {{/if}}
+            {{#if content.missionImage}}
+            <small class="form-text text-muted">الصورة الحالية: <a href="{{content.missionImage}}" target="_blank">عرض الصورة</a></small>
+            {{/if}}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+            <a href="/admin/content" class="btn btn-secondary">إلغاء</a>
+        </div>
+    </form>
+</div>

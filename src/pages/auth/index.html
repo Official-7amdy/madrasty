@@ -1,0 +1,145 @@
+{{!< base}}
+
+{{#section 'page_title'}}{{#if (eq mode 'register')}}إنشاء حساب{{else}}تسجيل الدخول{{/if}}{{/section}}
+{{#section 'page_description'}}سجل الدخول أو أنشئ حسابًا جديدًا على مدرستي.{{/section}}
+
+{{#section 'content'}}
+<main class="auth-container">
+  <div class="auth-split-layout">
+    <div class="auth-left-panel">
+      <div class="auth-brand-promo">
+          <div class="brand-logo">
+              <a href="/" class="brand-mark">م</a>
+              <h1 class="brand-name">مدرستي</h1>
+          </div>
+          <p>بوابتك نحو مستقبل مشرق<br>في عالم التكنولوجيا والبرمجة</p>
+      </div>
+      <div class="auth-promo-graphics">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+          <div class="shape shape-4"></div>
+           <div class="shape shape-5"></div>
+      </div>
+    </div>
+    <div class="auth-right-panel">
+      <div class="auth-form-container">
+        <div class="auth-header">
+          <h2 class="auth-title">{{#if (eq mode 'register')}}إنشاء حساب جديد{{else}}مرحبًا بعودتك{{/if}}</h2>
+          <p class="auth-subtitle">
+            {{#if (eq mode 'register')}}
+              انضم إلينا اليوم لتبدأ رحلتك التعليمية.
+            {{else}}
+              سجّل الدخول للمتابعة من حيث توقفت.
+            {{/if}}
+          </p>
+        </div>
+
+        <div class="social-auth">
+          <a href="#" class="social-btn social-btn--google">
+            <i class="fab fa-google"></i>
+            <span>المتابعة بواسطة Google</span>
+          </a>
+          <a href="#" class="social-btn social-btn--facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+
+        <div class="divider">
+          <span class="divider-text">أو</span>
+        </div>
+
+        {{#if error}}
+        <div class="auth-error-message">
+            {{error}}
+        </div>
+        {{/if}}
+
+        <form class="auth-form" id="auth-form" method="POST" action="/auth/login" novalidate>
+          <input type="hidden" name="redirect" value="{{redirect}}">
+          <div class="form-grid">
+            {{#if (eq mode 'register')}}
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" class="form-label">الاسم الكامل</label>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="اكتب اسمك بالكامل" required>
+                  <small class="form-error" data-error-for="name"></small>
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">البريد الإلكتروني</label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required>
+                  <small class="form-error" data-error-for="email"></small>
+                </div>
+              </div>
+            {{else}}
+              <div class="form-group">
+                <label for="email" class="form-label">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required>
+                <small class="form-error" data-error-for="email"></small>
+              </div>
+            {{/if}}
+
+            {{#if (eq mode 'register')}}
+            <div class="form-row">
+              <div class="form-group">
+                <label for="password" class="form-label">كلمة المرور</label>
+                <div class="input-group">
+                  <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required data-password>
+                  <button type="button" class="input-addon" data-password-toggle>
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <small class="form-error" data-error-for="password"></small>
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword" class="form-label">تأكيد كلمة المرور</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="أعد كتابة كلمة المرور" required>
+                <small class="form-error" data-error-for="confirmPassword"></small>
+              </div>
+            </div>
+            {{else}}
+            <div class="form-group">
+              <label for="password" class="form-label">كلمة المرور</label>
+              <div class="input-group">
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required data-password>
+                <button type="button" class="input-addon" data-password-toggle>
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+              <small class="form-error" data-error-for="password"></small>
+            </div>
+            {{/if}}
+          </div>
+
+          <div class="form-actions">
+            {{#if (eq mode 'login')}}
+              <div class="form-group-inline">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="remember" class="checkbox-input">
+                  <span class="checkbox-text">تذكرني</span>
+                </label>
+                <a href="#" class="form-link">نسيت كلمة المرور؟</a>
+              </div>
+            {{/if}}
+            <button type="submit" class="btn btn-primary btn-block">{{#if (eq mode 'register')}}إنشاء الحساب{{else}}تسجيل الدخول{{/if}}</button>
+          </div>
+        </form>
+        
+        <div class="auth-footer">
+          <p>
+            {{#if (eq mode 'register')}}
+              لديك حساب بالفعل؟ <a href="/auth" class="form-link">تسجيل الدخول</a>
+            {{else}}
+              ليس لديك حساب؟ <a href="/auth?mode=register" class="form-link">إنشاء حساب جديد</a>
+            {{/if}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{/section}}
+
+{{#section 'additional_js'}}
+<script type="module" src="/assets/js/pages/auth.js"></script>
+{{/section}}

@@ -1,0 +1,63 @@
+{{!< admin}}
+
+<div class="admin-card">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>إدارة الكورسات</h1>
+        <a href="/admin/courses/new" class="btn btn-primary">إضافة كورس جديد</a>
+    </div>
+
+    <!-- Search Form -->
+    <form action="/admin/courses" method="GET" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="ابحث عن كورس..." value="{{pagination.search}}">
+            <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>العنوان</th>
+                <th>الفئة</th>
+                <th>المدرب</th>
+                <th>السعر</th>
+                <th>إجراءات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.category}}</td>
+                <td>{{this.instructor}}</td>
+                <td>{{this.price}}</td>
+                <td>
+                    <a href="/admin/courses/edit/{{this.slug}}" class="btn btn-secondary btn-sm">تعديل</a>
+                    <a href="/admin/courses/delete/{{this.slug}}" class="btn btn-danger btn-sm" onclick="return confirm('هل أنت متأكد؟')">حذف</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    {{#if pagination.pages}}
+    <nav class="pagination-nav mt-4">
+        <ul class="pagination">
+            {{#if (gt pagination.page 1)}}
+            <li class="page-item"><a class="page-link" href="?page={{subtract pagination.page 1}}&search={{pagination.search}}">السابق</a></li>
+            {{/if}}
+
+            {{#each (times pagination.pages)}}
+            <li class="page-item {{#if (eq (add this 1) ../pagination.page)}}active{{/if}}">
+                <a class="page-link" href="?page={{add this 1}}&search={{../pagination.search}}">{{add this 1}}</a>
+            </li>
+            {{/each}}
+            
+            {{#if (lt pagination.page pagination.pages)}}
+            <li class="page-item"><a class="page-link" href="?page={{add pagination.page 1}}&search={{pagination.search}}">التالي</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+    {{/if}}
+</div>

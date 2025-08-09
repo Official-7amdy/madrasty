@@ -1,0 +1,27 @@
+{{!< base}}
+
+{{#section 'page_title'}}تواصل معنا{{/section}}
+{{#section 'page_description'}}تواصل مع فريق مدرستي لأي استفسارات أو اقتراحات.{{/section}}
+
+{{#section 'content'}}
+<section class="section">
+  <div class="container">
+    <h1 class="section__title">تواصل معنا</h1>
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="fullName">الاسم الكامل</label>
+        <input id="fullName" type="text" placeholder="اكتب اسمك" required />
+      </div>
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input id="email" type="email" placeholder="name@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="message">رسالتك</label>
+        <textarea id="message" rows="5" placeholder="اكتب رسالتك" required></textarea>
+      </div>
+      <button type="submit" class="button button--primary">إرسال</button>
+    </form>
+  </div>
+</section>
+{{/section}}

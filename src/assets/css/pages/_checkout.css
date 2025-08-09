@@ -1,0 +1,83 @@
+/* src/assets/css/pages/_checkout.css */
+
+.checkout-page {
+    padding: 4rem 0;
+    background-color: #F9FAFB;
+}
+.checkout-layout {
+    display: grid;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+@media (min-width: 992px) {
+    .checkout-layout {
+        grid-template-columns: 40% 60%;
+    }
+}
+/* Order Summary */
+.summary-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.summary-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #E2E8F0;
+}
+.plan-details {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #F1F5F9;
+}
+.plan-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.plan-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--auth-accent-color);
+}
+.price-period {
+    font-size: 1rem;
+    color: var(--auth-light-text-color);
+}
+.features-list {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    border-bottom: 1px solid #F1F5F9;
+}
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+}
+.features-list i {
+    color: #48BB78;
+}
+.total-amount {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding-top: 1rem;
+}
+/* Payment Form */
+.payment-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.payment-form {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #E2E8F0;
+}
+#card-element {
+    padding: 0.9rem 1rem;
+}

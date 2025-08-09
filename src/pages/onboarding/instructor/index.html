@@ -1,0 +1,33 @@
+{{!< base}}
+
+{{#section 'page_title'}}إكمال تسجيل المدرب{{/section}}
+
+{{#section 'content'}}
+<main class="onboarding-container">
+    <div class="onboarding-card">
+        <h1>مرحبًا بك كمدرب في مدرستي!</h1>
+        <p>نحن متحمسون لانضمامك إلينا. يرجى استكمال ملفك الشخصي.</p>
+
+        <form action="/onboarding/instructor" method="POST" class="onboarding-form">
+            <div class="form-step active">
+                <label for="expertise" class="form-label">مجال خبرتك الرئيسي</label>
+                <input type="text" id="expertise" name="expertise" class="form-control" placeholder="مثال: تطوير الويب، التسويق الرقمي" required>
+            </div>
+            <div class="form-step active">
+                <label for="experience" class="form-label">عدد سنوات الخبرة</label>
+                <input type="number" id="experience" name="experience" class="form-control" min="0" required>
+            </div>
+            <div class="form-step active">
+                <label for="bio" class="form-label">نبذة تعريفية قصيرة</label>
+                <textarea id="bio" name="bio" class="form-control" rows="4" placeholder="عرف الطلاب بنفسك وبخبراتك..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">إرسال وبدء التدريس</button>
+        </form>
+    </div>
+</main>
+{{/section}}
+
+{{#section 'additional_css'}}
+<link rel="stylesheet" href="/assets/css/pages/_instructor-onboarding.css">
+{{/section}}

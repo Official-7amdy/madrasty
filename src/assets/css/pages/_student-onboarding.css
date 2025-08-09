@@ -1,0 +1,43 @@
+/* src/assets/css/pages/_onboarding.css */
+.onboarding-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: var(--gray-50);
+}
+
+.onboarding-card {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.onboarding-card h1 {
+    margin-bottom: 0.5rem;
+    color: var(--gray-800);
+}
+.onboarding-card p {
+    margin-bottom: 2rem;
+    color: var(--gray-600);
+}
+
+.onboarding-form .form-step {
+    display: none;
+    margin-bottom: 1.5rem;
+}
+
+.onboarding-form .form-step.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.onboarding-form .form-label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}

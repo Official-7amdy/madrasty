@@ -1,0 +1,51 @@
+<!-- src/layouts/base.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{{_sections.page_description}}}">
+    <title>{{#if page_title}}{{page_title}} - مدرستي{{else}}مدرستي{{/if}}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <!-- Additional page-specific CSS -->
+    {{{_sections.additional_css}}}
+</head>
+<body>
+    <!-- Header -->
+    {{> header}}
+
+    <!-- Main Content -->
+    <main>
+        {{{_sections.content}}}
+    </main>
+
+    <!-- Footer -->
+    {{> footer}}
+
+    <!-- Main JavaScript -->
+    <script type="module" src="/assets/js/main.js"></script>
+    
+    <!-- Swiper's JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Additional page-specific JavaScript -->
+    {{{_sections.additional_js}}}
+</body>
+</html>

@@ -1,0 +1,345 @@
+/* src/assets/css/main.css */
+
+/* 1. Base Styles */
+@import url("base/_reset.css");
+@import url("base/_variables.css");
+@import url("base/_typography.css");
+
+/* 2. Component Styles */
+@import url("components/_header.css");
+@import url("components/_footer.css");
+@import url("components/_buttons.css");
+@import url("components/_forms.css");
+@import url("components/_course-card.css");
+
+/* 3. Page-Specific Styles */
+@import url("pages/_home.css");
+@import url("pages/_auth.css");
+@import url("pages/_course-listing.css");
+@import url("pages/_course-detail.css");
+@import url("pages/_subscription.css");
+@import url("pages/_checkout.css");
+@import url("pages/_student-onboarding.css");
+@import url("pages/_instructor-onboarding.css");
+
+.course-card__rating .fa-star { 
+    color: #fbbf24; 
+    margin-left: 0.25rem; 
+}
+
+/* Profile Page Styles */
+.profile-page {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.profile-sidebar .profile-avatar-card {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.profile-sidebar .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 4px solid var(--primary-blue);
+}
+
+.profile-sidebar .profile-name {
+    font-size: 1.5rem;
+    color: var(--gray-800);
+    margin: 0;
+}
+
+.profile-sidebar .profile-email {
+    color: var(--gray-500);
+}
+
+.profile-sidebar .profile-nav .nav-link {
+    display: block;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--gray-700);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.profile-sidebar .profile-nav .nav-link:hover,
+.profile-sidebar .profile-nav .nav-link.active {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+
+.profile-content .profile-section {
+    margin-bottom: 3rem;
+}
+
+.profile-content .section-title {
+    font-size: 1.75rem;
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.styled-form h4 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    color: var(--gray-800);
+}
+.styled-form hr.my-4 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-color: var(--gray-200);
+}
+
+/* Redesigned Profile Page (v2) */
+.profile-page-v2 {
+    background-color: var(--gray-50);
+}
+
+.profile-header {
+    background-color: #fff;
+    padding: 2rem 0 0;
+    border-bottom: 1px solid var(--gray-200);
+    margin-bottom: 2rem;
+}
+
+.profile-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-blue);
+}
+.profile-avatar { width: 100%; height: 100%; object-fit: cover; }
+.profile-name { font-size: 2rem; color: var(--gray-800); margin: 0 0 0.25rem; }
+.profile-email { color: var(--gray-500); }
+
+.profile-tabs-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+.profile-tabs-nav .tab-link {
+    padding: 1rem 0.5rem;
+    text-decoration: none;
+    color: var(--gray-600);
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+.profile-tabs-nav .tab-link i { margin-left: 0.5rem; }
+.profile-tabs-nav .tab-link:hover { color: var(--primary-blue); }
+.profile-tabs-nav .tab-link.active {
+    color: var(--primary-blue);
+    border-bottom-color: var(--primary-blue);
+}
+
+.profile-content .tab-content {
+    display: none;
+}
+.profile-content .tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 1.5rem;
+}
+.profile-card h3, .profile-card h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+}
+
+.mobile-nav-link:hover {
+    color: var(--primary-blue);
+}
+
+/* User Menu */
+.user-menu-container {
+    position: relative;
+}
+
+.user-menu-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--gray-700);
+}
+
+.user-menu-button .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-menu {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    padding: 0.5rem;
+    width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+}
+
+.user-menu-container:hover .user-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-menu-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: var(--gray-700);
+    border-radius: 0.25rem;
+}
+
+.user-menu-link:hover {
+    background-color: var(--gray-100);
+    color: var(--primary-blue);
+}
+.user-menu hr {
+    margin: 0.5rem 0;
+    border: none;
+    border-top: 1px solid var(--gray-200);
+}
+
+/* Course Player Styles */
+.course-player-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.course-player-main {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: 0.75rem;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.lesson-header {
+    padding: 1.5rem 0;
+}
+.lesson-header h1 { margin: 0 0 0.5rem; color: var(--gray-800); }
+.lesson-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-player-sidebar {
+    background: #fff;
+    border-left: 1px solid var(--gray-200);
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+.sidebar-header h3 { margin: 0; font-size: 1.2rem; }
+.sidebar-header a { font-size: 0.8rem; }
+
+.curriculum-list {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.module {
+    border-bottom: 1px solid var(--gray-200);
+}
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+.lesson-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hidden */
+}
+.module.open .lesson-list {
+    display: block;
+}
+.module.open .module-header i {
+    transform: rotate(180deg);
+}
+.lesson-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--gray-100);
+}
+.lesson-link:hover { background-color: var(--gray-50); }
+.lesson-link.active { background-color: var(--primary-blue); color: #fff; }
+.lesson-duration-badge {
+    margin-left: auto;
+    font-size: 0.8rem;
+    background-color: var(--gray-200);
+    padding: 0.2rem 0.5rem;
+    border-radius: 50px;
+}
+.lesson-link.active .lesson-duration-badge {
+    background-color: rgba(255,255,255,0.2);
+}

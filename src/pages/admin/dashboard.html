@@ -1,0 +1,88 @@
+{{!< admin}}
+
+<div class="dashboard-header" style="margin-bottom: 2rem;">
+    <h1>لوحة التحكم</h1>
+    <p class="text-muted">نظرة عامة سريعة على إحصائيات المنصة الرئيسية.</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon courses">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-title">إجمالي الكورسات</span>
+            <span class="stat-number">{{stats.courses}}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon users">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-title">إجمالي المستخدمين</span>
+            <span class="stat-number">{{stats.users}}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon subscriptions">
+            <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-title">خطط الاشتراك</span>
+            <span class="stat-number">{{stats.subscriptions}}</span>
+        </div>
+    </div>
+     <div class="stat-card">
+        <div class="stat-icon students">
+            <i class="fas fa-user-graduate"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-title">الطلاب</span>
+            <span class="stat-number">{{stats.students}}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon instructors">
+            <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-title">المدربون</span>
+            <span class="stat-number">{{stats.instructors}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-grid-secondary">
+    <div class="admin-card">
+        <h3>الكورسات</h3>
+        <p class="text-muted">إنشاء، قراءة، تحديث، وحذف الكورسات.</p>
+        <a href="/admin/courses" class="btn btn-secondary">إدارة الكورسات</a>
+    </div>
+    <div class="admin-card">
+        <h3>المستخدمين</h3>
+        <p class="text-muted">عرض وإدارة حسابات الطلاب والمدربين.</p>
+        <a href="/admin/users" class="btn btn-secondary">إدارة المستخدمين</a>
+    </div>
+    <div class="admin-card">
+        <h3>الاشتراكات</h3>
+        <p class="text-muted">إدارة مستويات الاشتراك والأسعار.</p>
+        <a href="/admin/subscriptions" class="btn btn-secondary">إدارة الاشتراكات</a>
+    </div>
+    <div class="admin-card">
+        <h3>المحتوى</h3>
+        <p class="text-muted">تعديل صفحات الموقع والنصوص ومحتوى الوسائط.</p>
+        <a href="/admin/content" class="btn btn-secondary">إدارة المحتوى</a>
+    </div>
+    <div class="admin-card">
+        <h3>التحليلات</h3>
+        <p class="text-muted">عرض بيانات التسجيل والاشتراكات والالتحاق بالكورسات.</p>
+        <a href="/admin/analytics" class="btn btn-secondary">عرض التحليلات</a>
+    </div>
+    <div class="admin-card">
+        <h3>الإعدادات</h3>
+        <p class="text-muted">تكوين الإعدادات على مستوى المنصة.</p>
+        <a href="/admin/settings" class="btn btn-secondary">إعدادات المنصة</a>
+    </div>
+</div>
+

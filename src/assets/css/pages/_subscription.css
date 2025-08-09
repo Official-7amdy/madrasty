@@ -1,0 +1,103 @@
+/* src/assets/css/pages/_subscription.css */
+
+.subscription-page .page-hero {
+    background: linear-gradient(135deg, #eff6ff 0%, #ffffff 60%);
+    padding: 4rem 0;
+    text-align: center;
+}
+.subscription-page .page-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+.subscription-page .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--auth-light-text-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+.pricing-section {
+    padding: 5rem 0;
+    background-color: #F9FAFB;
+}
+.pricing-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.pricing-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.pricing-card.recommended {
+    border-color: var(--auth-accent-color);
+    transform: scale(1.05);
+}
+.recommended-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--auth-accent-color);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.pricing-header {
+    text-align: center;
+    border-bottom: 1px solid #F1F5F9;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.plan-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.plan-price {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 1rem 0;
+    color: var(--auth-accent-color);
+}
+.price-period {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--auth-light-text-color);
+}
+.plan-description {
+    font-size: 0.9rem;
+    color: var(--auth-light-text-color);
+}
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+}
+.features-list .fa-check-circle {
+    color: #48BB78;
+}
+.features-list .fa-times-circle {
+    color: #F56565;
+}
