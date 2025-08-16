@@ -5,7 +5,6 @@ const session = require('express-session');
 const multer = require('multer');
 
 const app = express();
-const PORT = 3000;
 
 // --- Configuration ---
 app.use(express.urlencoded({ extended: true }));
@@ -66,30 +65,30 @@ const courseCategories = [
 ];
 
 const demoCourses = [
-    { 
-        slug: 'web-ui-basics', 
-        image: 'https://placehold.co/600x400/3b82f6/ffffff?text=تطوير+الويب', 
-        category: 'برمجة', 
-        categoryClass: 'programming', 
-        title: 'أساسيات تطوير واجهات الويب', 
-        description: 'تعلم HTML, CSS, و JavaScript لبناء مواقع وتطبيقات ويب تفاعلية.', 
-        price: 'ضمن الخطة الاحترافية', 
-        tier: 'pro', 
-        rating: '4.8', 
-        instructor: 'أحمد علي', 
+    {
+        slug: 'web-ui-basics',
+        image: 'https://placehold.co/600x400/3b82f6/ffffff?text=تطوير+الويب',
+        category: 'برمجة',
+        categoryClass: 'programming',
+        title: 'أساسيات تطوير واجهات الويب',
+        description: 'تعلم HTML, CSS, و JavaScript لبناء مواقع وتطبيقات ويب تفاعلية.',
+        price: 'ضمن الخطة الاحترافية',
+        tier: 'pro',
+        rating: '4.8',
+        instructor: 'أحمد علي',
         instructorAvatar: '/assets/images/avatar-1.jpg',
-        lessons: 24, 
+        lessons: 24,
         duration: '8 ساعات',
         featured: true,
         modules: [
-            { 
+            {
                 title: 'مقدمة إلى HTML',
                 lessons: [
                     { id: 1, title: 'ما هو HTML؟', duration: '5:30', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
                     { id: 2, title: 'العناصر والوسوم الأساسية', duration: '12:15', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
                 ]
             },
-            { 
+            {
                 title: 'التصميم باستخدام CSS',
                 lessons: [
                     { id: 3, title: 'أساسيات CSS', duration: '15:00', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
@@ -98,19 +97,19 @@ const demoCourses = [
             }
         ]
     },
-    { 
-        slug: 'digital-marketing', 
-        image: 'https://placehold.co/600x400/10b981/ffffff?text=التسويق+الرقمي', 
-        category: 'تسويق', 
-        categoryClass: 'marketing', 
-        title: 'استراتيجيات التسويق الرقمي', 
-        description: 'أتقن التسويق عبر وسائل التواصل، محركات البحث، والبريد الإلكتروني.', 
-        price: 'ضمن الخطة الاحترافية', 
-        tier: 'pro', 
-        rating: '4.9', 
-        instructor: 'سارة محمود', 
+    {
+        slug: 'digital-marketing',
+        image: 'https://placehold.co/600x400/10b981/ffffff?text=التسويق+الرقمي',
+        category: 'تسويق',
+        categoryClass: 'marketing',
+        title: 'استراتيجيات التسويق الرقمي',
+        description: 'أتقن التسويق عبر وسائل التواصل، محركات البحث، والبريد الإلكتروني.',
+        price: 'ضمن الخطة الاحترافية',
+        tier: 'pro',
+        rating: '4.9',
+        instructor: 'سارة محمود',
         instructorAvatar: '/assets/images/avatar-2.jpg',
-        lessons: 30, 
+        lessons: 30,
         duration: '12 ساعات',
         featured: true,
         modules: [
@@ -122,19 +121,19 @@ const demoCourses = [
             }
         ]
     },
-    { 
-        slug: 'graphic-design-intro', 
-        image: 'https://placehold.co/600x400/f59e0b/ffffff?text=التصميم', 
-        category: 'تصميم', 
-        categoryClass: 'design', 
-        title: 'مدخل إلى عالم التصميم الجرافيكي', 
-        description: 'تعلم أساسيات التصميم باستخدام Photoshop وIllustrator.', 
-        price: 'ضمن الخطة الأساسية', 
-        tier: 'basic', 
-        rating: '4.7', 
-        instructor: 'محمد سمير', 
+    {
+        slug: 'graphic-design-intro',
+        image: 'https://placehold.co/600x400/f59e0b/ffffff?text=التصميم',
+        category: 'تصميم',
+        categoryClass: 'design',
+        title: 'مدخل إلى عالم التصميم الجرافيكي',
+        description: 'تعلم أساسيات التصميم باستخدام Photoshop وIllustrator.',
+        price: 'ضمن الخطة الأساسية',
+        tier: 'basic',
+        rating: '4.7',
+        instructor: 'محمد سمير',
         instructorAvatar: '/assets/images/avatar-placeholder.png',
-        lessons: 18, 
+        lessons: 18,
         duration: '6 ساعات',
         featured: true,
         modules: [
@@ -219,13 +218,13 @@ const requireOnboarding = (req, res, next) => {
 // --- Routes ---
 app.use(requireOnboarding);
 
-app.get('/', (req, res) => res.render('index', { 
+app.get('/', (req, res) => res.render('index', {
     courses: demoCourses.slice(0, 3),
-    page: pageContent.home 
+    page: pageContent.home
 }));
 app.get('/courses', (req, res) => {
     const featuredCourses = demoCourses.filter(c => c.featured);
-    
+
     const categoriesWithCourses = courseCategories.map(category => {
         return {
             name: category.name,
@@ -233,7 +232,7 @@ app.get('/courses', (req, res) => {
         };
     }).filter(category => category.courses.length > 0);
 
-    res.render('courses/index', { 
+    res.render('courses/index', {
         featuredCourses,
         categories: categoriesWithCourses
     });
@@ -249,7 +248,7 @@ app.get('/courses/:slug', (req, res, next) => {
             isEnrolled = true;
         }
     }
-    
+
     const firstLessonId = course.modules?.[0]?.lessons?.[0]?.id;
 
     res.render('courses/detail', { course, isEnrolled, firstLessonId });
@@ -263,13 +262,13 @@ app.post('/auth/login', (req, res) => {
     const user = demoUsers.find(u => u.email === email && u.password === password);
 
     if (user) {
-        req.session.user = { 
-            id: user.id, 
-            name: user.name, 
+        req.session.user = {
+            id: user.id,
+            name: user.name,
             role: user.role,
             profilePicture: user.profilePicture
         };
-        
+
         if (user.role === 'instructor') {
             res.redirect('/instructor/dashboard');
         } else {
@@ -313,10 +312,10 @@ app.get('/profile', requireAuth, (req, res) => {
 
     const enrolled = user.enrolledCourses?.map(slug => demoCourses.find(c => c.slug === slug)) || [];
 
-    res.render('profile', { 
-        user, 
+    res.render('profile', {
+        user,
         enrolled,
-        subscription: subscriptionPlans[user.subscription] 
+        subscription: subscriptionPlans[user.subscription]
     });
 });
 
@@ -332,7 +331,7 @@ app.post('/profile/update', requireAuth, upload.single('profilePicture'), (req, 
     if (req.file) {
         user.profilePicture = `/uploads/${req.file.filename}`;
     }
-    
+
     // Update session user
     req.session.user = { ...req.session.user, name: user.name, profilePicture: user.profilePicture };
 
@@ -481,7 +480,7 @@ app.get('/admin/courses', requireAdmin, (req, res) => {
     const pages = Math.ceil(total / perPage);
     const paginatedCourses = filteredCourses.slice((page - 1) * perPage, page * perPage);
 
-    res.render('admin/courses', { 
+    res.render('admin/courses', {
         courses: paginatedCourses,
         pagination: {
             page,
@@ -505,7 +504,7 @@ app.get('/admin/courses/edit/:slug', requireAdmin, (req, res) => {
 app.post('/admin/courses/save', requireAdmin, (req, res) => {
     const { title, category, instructor, price, description, categoryClass } = req.body;
     const newSlug = req.body.slug || title.toLowerCase().replace(/\s+/g, '-');
-    
+
     // Check if slug already exists to prevent duplicates
     if (demoCourses.some(c => c.slug === newSlug)) {
         // In a real app, you'd render the form again with an error message
@@ -705,7 +704,7 @@ app.get('/admin/settings', requireAdmin, (req, res) => res.render('admin/setting
 // 404
 app.use((req, res) => res.status(404).render('404'));
 
-// --- Start Server ---
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
-});
+// --- Vercel Deployment ---
+// The app.listen() is removed as Vercel handles the server lifecycle.
+// Export the app object for Vercel's runtime.
+module.exports = app;
